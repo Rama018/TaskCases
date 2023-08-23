@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TaskCases.Models.Case>
+
+@{
+    ViewData["Title"] = "List of Cases";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifideOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CaseNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifideOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.subject.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contact.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.account.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.ID">Edit</a> |
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

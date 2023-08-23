@@ -1,0 +1,81 @@
+﻿@model TaskCases.ViewModel.CaseVM
+
+
+<form method="post" enctype="multipart/form-data" asp-action="Create">
+    <div class="border p-3 mt-4">
+        <div class="container">
+            <div class="row header">
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.CreatedOn" class="form-label">Created On</label>
+                    <input asp-for="cases.CreatedOn" class="form-control" readonly type="hidden"value="@DateTime.Today.ToString("dd")" />
+                    <span asp-validation-for="cases.CreatedOn" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.Owner" class="form-label">Owner</label>
+                    <input asp-for="cases.Owner" class="form-control" />
+                    <span asp-validation-for="cases.Owner" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Body Section -->
+            <div class="row body">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.CaseNumber">Case Number</label>
+                    <input asp-for="cases.CaseNumber" class="form-control" />
+                    <span asp-validation-for="cases.CaseNumber" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.Name">Name</label>
+                    <input asp-for="cases.Name" class="form-control" />
+                    <span asp-validation-for="cases.Name" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.SubjectID">Subject</label>
+                    <select asp-for="cases.SubjectID" asp-items="@Model.subject" class="form-select">
+                        <option disabled selected>--Select Subject</option>
+                    </select>
+                    <span asp-validation-for="cases.SubjectID" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="cases.Customer">Customer</label>
+                    <input asp-for="cases.Customer" class="form-control" />
+                    <span asp-validation-for="cases.Customer" class="text-danger"></span>
+                </div>
+            @*    <div class="col-md-6 mb-3">
+                    <label asp-for="cases.Customer">Customer</label>
+                    <div>
+                        <label asp-for="cases.AccountID">Account</label>
+                        <select asp-for="cases.AccountID" asp-items="@Model.account" class="form-select">
+                            <option disabled selected>--Select Account</option>
+                        </select>
+                        <span asp-validation-for="cases.AccountID" class="text-danger"></span>
+
+
+                        <label asp-for="cases.ContactID">Contact</label>
+                        <select asp-for="cases.ContactID" asp-items="@Model.contact" class="form-select">
+                            <option disabled selected>--Select Account</option>
+                        </select>
+                        <span asp-validation-for="cases.ContactID" class="text-danger"></span>
+                    </div>
+                </div>*@
+            </div>
+            <div class="row  footer">
+                <div class="mb-3">
+                    <label asp-for="cases.ModifideOn">Modified On</label>
+                    <input type="hidden" asp-for="cases.ModifideOn" class="form-control" readonly />
+                </div>
+            </div>
+            <!-- Buttons -->
+            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <a asp-action="List" asp-controller="Cases" class="btn btn-secondary" style="width:150px">Back To List</a>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}
+
